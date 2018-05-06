@@ -9,7 +9,8 @@ class App extends Component {
     // Initial state
     this.state = {
       quote: '',
-      author: ''
+      author: '',
+      tweetURL: '#'
     }
     // Bind class methods
     this.fetchQuote = this.fetchQuote.bind(this)
@@ -25,20 +26,21 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         const { quote, author } = data
-
+        this.sendTweet(quote)
         this.setState({ quote, author })
       })
   }
 
-  sendTweet () {
-    console.log('send tweet')
+  sendTweet (quote) {
+    const url = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="${encodeURIComponent(quote)}"`
+    this.setState({ tweetURL: url })
   }
   render () {
-    const { quote, author } = this.state
+    const { quote, author, tweetURL } = this.state
     return (
       <div>
         <Header />
-        <Quote quote={quote} author={author} changeQuote={this.fetchQuote} sendTweet={this.sendTweet} />
+        <Quote quote={quote} author={author} tweetURL={tweetURL} changeQuote={this.fetchQuote} sendTweet={this.sendTweet} />
         <Footer />
       </div>
     )
