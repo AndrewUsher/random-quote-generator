@@ -1,9 +1,12 @@
+@import 'variables.styl'
+
 .quote 
   background-color: #eee;
   border-radius: 2px;
   box-shadow: 0 2px 2px rgba(#000, 10%);
   padding: 30px;
   margin: 0 auto;
+  min-height: 200px;
   max-width: 600px;
 
   p 
@@ -14,9 +17,16 @@
   .buttons 
     margin-top: 30px;
 
-    button:not(first-child)
-      margin-left: 20px;
-      background-color: #4ECCA3;
+    button
+      margin-left: 30px;
+      background-color: $buttonColor;
       border: none;
+      cursor: pointer;
       font-size: 16px;
       padding: 10px 15px;
+      transition: background-color 250ms,
+                  transform 400ms;
+
+      &:hover 
+        background-color: darken($buttonColor, 20%);
+        transform: scale(1.1);
