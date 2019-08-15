@@ -37,6 +37,7 @@ class App extends Component {
     )}"`
     this.setState({ tweetURL: url })
   }
+
   render () {
     const { quote, tweetURL } = this.state
     return (
