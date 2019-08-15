@@ -22,25 +22,27 @@ class App extends Component {
   }
 
   fetchQuote () {
-    fetch('https://talaikis.com/api/quotes/random/', { mode: 'cors' })
+    fetch('https://api.kanye.rest', { mode: 'cors' })
       .then(response => response.json())
       .then(data => {
-        const { quote, author } = data
+        const { quote } = data
         this.sendTweet(quote)
-        this.setState({ quote, author })
+        this.setState({ quote })
       })
   }
 
   sendTweet (quote) {
-    const url = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="${encodeURIComponent(quote)}"`
+    const url = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="${encodeURIComponent(
+      quote
+    )}"`
     this.setState({ tweetURL: url })
   }
   render () {
-    const { quote, author, tweetURL } = this.state
+    const { quote, tweetURL } = this.state
     return (
       <div>
         <Header />
-        <Quote quote={quote} author={author} tweetURL={tweetURL} changeQuote={this.fetchQuote} sendTweet={this.sendTweet} />
+        <Quote quote={quote} tweetURL={tweetURL} changeQuote={this.fetchQuote} sendTweet={this.sendTweet} />
         <Footer />
       </div>
     )
