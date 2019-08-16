@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Header from '../components/Header'
 import Quote from '../components/Quote'
 import Footer from '../components/Footer'
-import '../styles/index.styl'
+import GlobalStyles from '../components/GlobalStyles'
+
 class App extends Component {
   constructor (props) {
     super(props)
@@ -42,6 +43,7 @@ class App extends Component {
     const { quote, tweetURL } = this.state
     return (
       <div>
+        <GlobalStyles />
         <Header />
         <Quote quote={quote} tweetURL={tweetURL} changeQuote={this.fetchQuote} sendTweet={this.sendTweet} />
         <Footer />
