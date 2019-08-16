@@ -1,10 +1,17 @@
 import React from 'react'
-import '../styles/_header.styl'
+import styled from 'styled-components'
+
+const StyledHeader = styled.header`
+  color: #eee;
+  margin-bottom: 100px;
+  padding-top: 30px;
+  text-align: center;
+`
 
 const Header = () => (
-  <header>
+  <StyledHeader>
     <h1>Random Quote Generator</h1>
-  </header>
+  </StyledHeader>
 )
 
 export default Header
